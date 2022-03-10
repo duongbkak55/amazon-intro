@@ -12,7 +12,6 @@ function Checkout() {
     const items = useSelector(selectItems);
     const total = useSelector(selectTotal);
     const {data:session} = useSession();
-
     return (
         <div className='bg-gray-100'>
             <Header />
