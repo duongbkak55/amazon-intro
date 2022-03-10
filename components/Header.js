@@ -42,7 +42,7 @@ function Header() {
                         <p>Returns</p>
                         <p className='font-extrabold md:text-sm'>& Orders</p>
                     </div>
-                    <div className='relative link flex items-center' onClick={() => router.push("/checkout")} >
+                    <div className='relative link flex items-center' onClick={() => router.push("/Checkout")} >
                         <span className='absolute right-0 top-0 md:right-10 h-4 w-4 bg-yellow-400 text-center font-bold rounded-full'>{items.length}</span>
                         <ShoppingCartIcon className='h-10' />
                         <p className='hidden md:inline font-extrabold md:text-sm mt-2'>Basket</p>
