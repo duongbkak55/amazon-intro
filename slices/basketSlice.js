@@ -9,10 +9,17 @@ export const basketSlice = createSlice({
   initialState,
   reducers: {
     addToBasket: (state, action) => {
-        state.items = [...state.items,action.payload];
+      state.items = [...state.items, action.payload];
     },
     removeFromBasket: (state, action) => {
-        state.items.filter((item) => item.id !== action.payload);
+      const index = state.items.findIndex((item) => item.id === action.payload.id);
+      let newBasket = [...state.items];
+      if (index >= 0) {
+        newBasket.splice(index, 1);
+      } else {
+        console.warn(`cant remove product (id: ${action.payload.id}) as ints not in arrays`)
+      }
+      state.items = newBasket;
     },
   },
 })
@@ -22,5 +29,6 @@ export const { addToBasket, removeFromBasket } = basketSlice.actions
 
 // selector
 export const selectItems = (state) => state.basket.items;
+export const selectTotal = (state) => state.basket.items.reduce((total, item) => total + item.price,0);
 
 export default basketSlice.reducer
